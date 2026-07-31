@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://openart.ai/mcp
+server:
+  name: openart
+  transport: http          # Streamable HTTP
+  url: https://mcp.openart.ai/mcp
+  authentication:
+    type: oauth2
+    note: >-
+      No API key required. Users authorize with their OpenArt account via OAuth
+      on first connect. OAuth server metadata is published at
+      https://openart.ai/.well-known/oauth-authorization-server (PKCE S256,
+      Dynamic Client Registration, scope full_access).
+    authorization_endpoint: https://openart.ai/suite/api/auth/oauth/authorize
+    token_endpoint: https://openart.ai/suite/api/auth/oauth/token
+    registration_endpoint: https://openart.ai/suite/api/auth/oauth/register
+    scopes: [full_access]
+setup:
+  claude: >-
+    Settings -> Connectors -> Add custom connector; name it "OpenArt" and paste
+    https://mcp.openart.ai/mcp; Connect and sign in with your OpenArt account.
+  cursor: >-
+    Settings -> MCP & Integrations -> New MCP server; add OpenArt with the server
+    URL to mcp.json; approve the login prompt in the browser.
+# Capability areas documented on the OpenArt MCP page. The live tools/list
+# endpoint requires OAuth (401 without an Authorization header), so exact tool
+# names/schemas are not enumerable anonymously; these are the documented
+# capability groups, not invented operationIds.
+capabilities:
+- Image generation (text-to-image across multiple models)
+- Video creation (text-to-video and image-to-video workflows)
+- Model discovery (list available image and video models)
+- Library management (browse and reuse previous generations as references)
+- Project organization (list and assign creations to OpenArt projects)
+- Account information (check credits and plan details)
+- External references (upload or paste image URLs for use in generation)
+- Workspace switching (navigate between OpenArt workspaces)
+verification:
+  endpoint_status: 401   # GET/POST https://mcp.openart.ai/mcp without OAuth
+  probed: '2026-07-20'

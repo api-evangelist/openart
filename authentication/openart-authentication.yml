@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: https://openart.ai/.well-known/oauth-authorization-server
+docs: https://openart.ai/mcp
+summary:
+  types: [oauth2]
+  oauth2_flows: [authorizationCode]
+  pkce: true
+  dynamic_client_registration: true
+  public_clients: true
+  scopes: [full_access]
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://openart.ai/suite/api/auth/oauth/authorize
+    tokenUrl: https://openart.ai/suite/api/auth/oauth/token
+    registrationUrl: https://openart.ai/suite/api/auth/oauth/register
+    revocationUrl: https://openart.ai/suite/api/auth/oauth/revoke
+    codeChallengeMethods: [S256]
+    grantTypes: [authorization_code, refresh_token]
+    tokenEndpointAuthMethods: [none]
+    scopes:
+      full_access: Full access to the authenticated OpenArt account
+  sources: [well-known/openart-oauth-authorization-server.json]
+notes: >-
+  OpenArt's authenticated surface is its remote MCP server
+  (https://mcp.openart.ai/mcp). Authentication is OAuth 2.0 Authorization Code
+  with PKCE and RFC 7591 Dynamic Client Registration; clients are public
+  (no client secret). OpenID Connect discovery is also published. No public REST
+  API key program is documented.

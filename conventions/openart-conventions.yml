@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source: https://openart.ai/mcp
+scope: >-
+  Cross-cutting semantics for OpenArt's authenticated surface, which is its
+  remote MCP server rather than a conventional REST API. Captured from the OAuth
+  metadata and MCP documentation; fields with no published contract are recorded
+  as unknown rather than invented.
+authentication:
+  style: oauth2-authorization-code
+  pkce: true
+  scopes: [full_access]
+  detail: authentication/openart-authentication.yml
+transport:
+  protocol: Model Context Protocol (Streamable HTTP)
+  endpoint: https://mcp.openart.ai/mcp
+idempotency:
+  supported: unknown
+  note: No idempotency-key contract is documented for the MCP tool surface.
+pagination:
+  style: unknown
+versioning:
+  scheme: unknown
+  note: OAuth/MCP endpoints live under /suite/api; no versioned path scheme published.
+error_envelope:
+  note: >-
+    OAuth errors follow RFC 6749 form (e.g. {"error":"invalid_token",
+    "error_description":"Missing or malformed Authorization header"} observed on
+    the MCP endpoint without an Authorization header).
+rate_limits:
+  signal: unknown
+  note: Account credit/plan limits apply; no HTTP rate-limit headers documented.

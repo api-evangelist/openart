@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://openart.ai/.well-known/oauth-authorization-server
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    OAuth 2.0 Authorization Server Metadata published at
+    /.well-known/oauth-authorization-server; authorization_code + refresh_token
+    grants.
+- id: rfc8414-as-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with issuer/endpoints.
+- id: oidc-discovery
+  conforms: true
+  evidence: /.well-known/openid-configuration returns 200 (OpenID Connect discovery).
+- id: pkce-rfc7636
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256].
+- id: dynamic-client-registration-rfc7591
+  conforms: true
+  evidence: registration_endpoint present; public clients (auth method none).
+- id: mcp
+  conforms: true
+  evidence: >-
+    Remote Model Context Protocol server (Streamable HTTP) at
+    https://mcp.openart.ai/mcp, documented at https://openart.ai/mcp.
+- id: rfc9457-problem-details
+  conforms: false
+- id: fapi
+  conforms: false

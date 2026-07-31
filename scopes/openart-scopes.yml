@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://openart.ai/.well-known/oauth-authorization-server
+docs: https://openart.ai/mcp
+schemes:
+- name: OAuth2
+  source: well-known/openart-oauth-authorization-server.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://openart.ai/suite/api/auth/oauth/authorize
+    tokenUrl: https://openart.ai/suite/api/auth/oauth/token
+scopes:
+- scope: full_access
+  description: >-
+    Full access to the authenticated OpenArt account and its capabilities
+    (image/video generation, model discovery, library, projects, account
+    credits/plan). This is the only scope OpenArt's OAuth server advertises
+    (scopes_supported: [full_access]); it is a coarse, all-or-nothing grant.
+  flows: [authorizationCode]
+  sources: [well-known/openart-oauth-authorization-server.json]

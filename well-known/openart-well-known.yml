@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of https://openart.ai/.well-known/*
+host: https://openart.ai
+documents:
+- path: /.well-known/openid-configuration
+  status: 200
+  file: openart-openid-configuration.json
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: openart-oauth-authorization-server.json
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+notes: >-
+  OpenArt publishes RFC 8414 OAuth 2.0 Authorization Server Metadata and OpenID
+  Connect discovery. Both documents are identical and describe the OAuth service
+  that fronts the OpenArt remote MCP server (https://mcp.openart.ai/mcp). The
+  server supports authorization_code + refresh_token grants, PKCE (S256), OAuth
+  Dynamic Client Registration (RFC 7591, registration_endpoint present), public
+  clients (token_endpoint_auth_methods_supported: none), and a single scope,
+  full_access.
