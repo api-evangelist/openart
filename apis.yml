@@ -51,7 +51,7 @@ tags:
 - Company
 - Artificial Intelligence
 - Generative AI
-- Image-Generation
+- Image Generation
 - Video Generation
 - Creative Tools
 - MCP
@@ -64,6 +64,7 @@ tags_raw:
 - Creative Tools
 - MCP
 - Model Context Protocol
+- Image-Generation
 apis:
 - name: OpenArt MCP Server
   description: >-
